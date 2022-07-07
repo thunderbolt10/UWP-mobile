@@ -1,23 +1,15 @@
 ========================================================================
-    C++/WinRT MobileB Project Overview
+    MobileB C++/WinRT MobileB Project Overview
 ========================================================================
 
-This project demonstrates how to get started writing XAML apps directly
-with standard C++, using the C++/WinRT SDK component and XAML compiler 
-support to generate implementation headers from interface (IDL) files.
-These headers can then be used to implement the local Windows Runtime 
-classes referenced in the app's XAML pages.
+This UWP project is to test WinRT API for mobile broadband. Specifically 
+Call establishmenet and teardown.
 
-Steps:
-1. Create an interface (IDL) file to define any local Windows Runtime 
-    classes referenced in the app's XAML pages.
-2. Build the project once to generate implementation templates under 
-    the "Generated Files" folder, as well as skeleton class definitions 
-    under "Generated Files\sources".  
-3. Use the skeleton class definitions for reference to implement your
-    Windows Runtime classes.
+A seperate thread is started when the Connect button is clicked to run 
+ConnectMobile(). This calls ConnectivityManager::AcquireConnectionAsync()
+to establish a call. When the call completes the thread acquires the 
+ConnectionSession and then waits for the disconnect event triggered by
+a condition variable. The call is then disconnected by calling session.Close().
+Closing the call does not seem to work.
 
-========================================================================
-Learn more about C++/WinRT here:
-http://aka.ms/cppwinrt/
 ========================================================================
